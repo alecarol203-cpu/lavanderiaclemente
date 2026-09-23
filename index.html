@@ -10,51 +10,6 @@
 <style>
   /* ============ TOKENS ============ */
   :root{
-    --bg:#FAF6EC;
-    --surface:#FFFFFF;
-    --surface-blue:#EEF4FB;
-    --ink:#17273D;
-    --ink-soft:#51617A;
-    --ink-faint:#8595AB;
-    --blue:#0059C4;
-    --blue-deep:#063A7A;
-    --sky:#4FA8E8;
-    --sky-soft:#DDEEFC;
-    --yellow:#F0B90B;
-    --yellow-soft:#FCEFC4;
-    --on-yellow:#16233A;
-    --line:rgba(23,39,61,0.12);
-    --line-soft:rgba(23,39,61,0.07);
-    --shadow:0 1.5rem 3rem -1.75rem rgba(6,58,122,0.35);
-    --shadow-sm:0 0.6rem 1.4rem -0.9rem rgba(6,58,122,0.4);
-    --radius-lg:1.75rem;
-    --radius-md:1.1rem;
-    --radius-sm:0.6rem;
-    --font-display:'Lora', Georgia, 'Times New Roman', serif;
-    --font-body:'Figtree', -apple-system, 'Segoe UI', sans-serif;
-    --font-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#0E1B2C;
-      --surface:#152A42;
-      --surface-blue:#122539;
-      --ink:#F3EEE1;
-      --ink-soft:#B9C6D6;
-      --ink-faint:#82909F;
-      --blue:#6FB3F5;
-      --blue-deep:#9ECBF7;
-      --sky:#4FA8E8;
-      --sky-soft:#1B3A54;
-      --yellow:#F5C518;
-      --yellow-soft:#3A3113;
-      --line:rgba(243,238,225,0.14);
-      --line-soft:rgba(243,238,225,0.08);
-      --shadow:0 1.5rem 3rem -1.75rem rgba(0,0,0,0.7);
-      --shadow-sm:0 0.6rem 1.4rem -0.9rem rgba(0,0,0,0.6);
-    }
-  }
-  :root[data-theme="dark"]{
     --bg:#0E1B2C;
     --surface:#152A42;
     --surface-blue:#122539;
@@ -67,10 +22,17 @@
     --sky-soft:#1B3A54;
     --yellow:#F5C518;
     --yellow-soft:#3A3113;
+    --on-yellow:#16233A;
     --line:rgba(243,238,225,0.14);
     --line-soft:rgba(243,238,225,0.08);
     --shadow:0 1.5rem 3rem -1.75rem rgba(0,0,0,0.7);
     --shadow-sm:0 0.6rem 1.4rem -0.9rem rgba(0,0,0,0.6);
+    --radius-lg:1.75rem;
+    --radius-md:1.1rem;
+    --radius-sm:0.6rem;
+    --font-display:'Lora', Georgia, 'Times New Roman', serif;
+    --font-body:'Figtree', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   }
 
   /* ============ RESET / BASE ============ */
@@ -126,8 +88,6 @@
     border:1.5px solid var(--sky);
     opacity:0.16;
   }
-  :root[data-theme="dark"] .bubble-field span,
-  @media (prefers-color-scheme:dark){ .bubble-field span{opacity:0.14;} }
 
   /* ============ HEADER / NAV ============ */
   header{
