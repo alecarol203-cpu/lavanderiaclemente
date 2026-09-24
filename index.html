@@ -1035,7 +1035,8 @@
 
   /* ---- Cursor-follow bubble trail ---- */
   var isFinePointer = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
-  if (!reduceMotion && isFinePointer) {
+  var isTouchCapable = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  if (!reduceMotion && (isFinePointer || isTouchCapable)) {
     var lastSpawn = 0;
     var minInterval = 55; /* ms between bubbles */
     var pool = [];
@@ -1076,12 +1077,25 @@
       requestAnimationFrame(step);
     }
 
-    window.addEventListener('mousemove', function(e){
-      var now = performance.now();
-      if (now - lastSpawn < minInterval) return;
-      lastSpawn = now;
-      spawnBubble(e.clientX, e.clientY);
-    }, { passive: true });
+    if (isFinePointer) {
+      window.addEventListener('mousemove', function(e){
+        var now = performance.now();
+        if (now - lastSpawn < minInterval) return;
+        lastSpawn = now;
+        spawnBubble(e.clientX, e.clientY);
+      }, { passive: true });
+    }
+
+    if (isTouchCapable) {
+      window.addEventListener('touchmove', function(e){
+        if (!e.touches || !e.touches.length) return;
+        var now = performance.now();
+        if (now - lastSpawn < minInterval) return;
+        lastSpawn = now;
+        var t = e.touches[0];
+        spawnBubble(t.clientX, t.clientY);
+      }, { passive: true });
+    }
   }
 
   /* ---- Hero slideshow (auto-advancing, 2s) ---- */
